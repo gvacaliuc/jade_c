@@ -1,0 +1,17 @@
+! -*- f90 -*-
+! File jade_c.pyf
+python module _jade_c
+interface
+  subroutine jade(icajade, icacoffs, dim, num_samp)
+
+    intent(c) jade                ! is a C function
+    intent(c)                     ! all arguments are
+                                  ! considered as C based
+    integer intent(in) :: dim
+    integer intent(in) :: num_samp
+    real*8  intent(out), dimension(dim,dim), depend(dim)                  :: icajade(dim,dim)
+    real*8  intent(inout), dimension(dim,num_samp), depend(dim,num_samp)  :: icacoffs(dim,num_samp)
+
+  end subroutine jade
+end interface
+end python module m
